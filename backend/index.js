@@ -1,11 +1,20 @@
 const express = require('express');
-const { createTodo, updateTodo } = require('./types');
+const mongoose = require('mongoose');
 const app = express();
-app.use(express.json());
+const cors = require('cors');
+
+app.use(cors());
+
+const Todo = require('./db');
+const { createTodo, updateTodo } = require('./types');
 
 const port = 8000;
 
-app.get("/todo", (req, res) => { 
+
+app.use(express.json());
+
+
+app.post("/todo", async (req, res) => { 
 
     const createPayload = req.body;
     const parsedPayload = createTodo.safeParse(createPayload);
@@ -16,15 +25,27 @@ app.get("/todo", (req, res) => {
         })
         return;
     }
+    
+    let todos = await Todo.create({
+        title: parsedPayload.data.title,
+        description: parsedPayload.data.description,
+        isCompleted: parsedPayload.data.isCompleted,
+    })
 
-    res.send("Hello")
+    todos.save();
+    res.status(200).json({
+        msg: "Success your todo is Added",
+    })
 })
 
-app.post("/todos", (req, res) => { 
-    res.send("Hello")
+app.get("/todos", async (req, res) => { 
+    
+    let todos = await Todo.find()
+    console.log(todos)
+    res.send(todos)
 })
 
-app.put("/completed", (req, res) => {
+app.put("/completed", async (req, res) => {
     
     const createPayload = req.body;
     const parsedPayload = updateTodo.safeParse(createPayload);
@@ -35,6 +56,12 @@ app.put("/completed", (req, res) => {
         })
         return;
     }
+
+    await Todo.updateOne({
+        title: parsedPayload.data.title,
+        description: parsedPayload.data.description,
+        isCompleted: parsedPayload.data.isCompleted,
+    })
     
     res.send("Hello")
 })

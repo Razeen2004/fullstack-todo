@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://0.0.0.0/27017/Todo");
-
-
+mongoose.connect("mongodb://localhost:27017/Todo");
 
 const TodoSchema = mongoose.Schema({
-
+    title: String,
+    description: String,
+    isCompleted: Boolean,
 })
+
+const Todo = new mongoose.model("Todo", TodoSchema);
+
+module.exports = Todo;
