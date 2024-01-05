@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.todo {
+    position: relative;
+    z-index: 10;
+    width: 250px;
+    min-height: 300px;
+    height: 300px;
+    max-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 45px;
+    background: #0e121985;
+    overflow: hidden;
+}
+
+.todo svg {
+    color: #fff;
+    margin-top: 50px;
+    margin-left: 15px;
+    width: 25px;
+    height: auto;
+}
+
+.todo .todo-content input {
+    color: #fff;
+    width: 100%;
+    padding: 0px 12px;
+    height: 30px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-family: Arial;
+    margin-bottom: 20px;
+}
+
+.todo .todo-content input:focus {
+    outline: 0px;
+}
+
+.todo .todo-content textarea {
+    width: 100%;
+    resize: none;
+    min-height: 80px;
+    max-height: auto;
+    height: auto;
+    overflow: hidden;
+    display: block;
+    color: #fff;
+    width: 100%;
+    padding: 0px 12px;
+    background: none;
+    border: none;
+    font-family: Arial;
+    font-size: 20px;
+}
+
+
+.todo .todo-content textarea:focus {
+    outline: 0px;
+}
+
+.todo-content {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.todo .todo-content button {
+    height: 70px;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    background: #0f2242;
+}
+
+.todo .todo-content button:hover{
+    opacity: .9;
+    cursor: pointer;
+}

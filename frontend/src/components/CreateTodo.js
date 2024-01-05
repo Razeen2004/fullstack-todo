@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
-
-const CreateTodo = () => {
+import './CreateTodos.css'
+import { FaFileAlt } from "react-icons/fa";
+import { useRef } from "react";
+import { motion } from "framer-motion";
+const CreateTodo = ({ constraintsRef }) => {
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -8,7 +11,7 @@ const CreateTodo = () => {
     const ButtonOnClick = async (e) => {
         e.preventDefault();
 
-        fetch("http://localhost:8000/todo",{
+        fetch("http://localhost:8000/todo", {
             method: "POST",
             body: JSON.stringify({
                 title: title,
@@ -19,23 +22,26 @@ const CreateTodo = () => {
                 "Content-Type": "application/json"
             },
         }).then((res) => {
-            res.json((response)=>{
+            res.json((response) => {
                 response.status(200).json({
                     Todo: "Todo Added"
                 })
             })
         })
-
     }
-    console.log(title,description)
+    
+    console.log(title, description)
     return (
-        <>
-            <input type="text" placeholder='Title' onChange={(e) => { setTitle(e.target.value) }} /> <br />
-            <input type="text" placeholder='Description' onChange={(e) => { setDescription(e.target.value) }} /><br />
-            <button onClick={ButtonOnClick}>
-                Add a Todo
-            </button>
-        </>
+        <motion.div whileDrag={{scale: 1.1}} drag dragConstraints={constraintsRef} className='todo'>
+            <FaFileAlt />
+            <div className="todo-content">
+                <input type="text" placeholder='Title' onChange={(e) => { setTitle(e.target.value) }} />
+                <textarea type="text" placeholder='Description' onChange={(e) => { setDescription(e.target.value) }} />
+                <button onClick={ButtonOnClick}>
+                    Add a Todo
+                </button>
+            </div>
+        </motion.div>
     )
 }
 

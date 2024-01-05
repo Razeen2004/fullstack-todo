@@ -32,7 +32,43 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  background: #12171f;
+}
+.drag{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.body::before {
+  z-index: 1;
+  content: "Docs";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 245px;
+  opacity: 0.2;
+  font-weight: 700;
 }
