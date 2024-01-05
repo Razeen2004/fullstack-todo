@@ -9,13 +9,7 @@ function App() {
 
   let [todo, setTodo] = useState([]);
   const constraintsRef = useRef(null);
-  // async function Todos(){
-
-  //   let data = await fetch("http://localhost:8000/todos")
-  //   let todo = await data.json();
-  //   setTodo(todo);
-  // }
-  // Todos()
+  
   useEffect(() => {
     const fetchTodos = async () => {
       try {
