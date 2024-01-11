@@ -44,5 +44,4 @@ const CreateTodo = ({ constraintsRef }) => {
         </motion.div>
     )
 }
-// some random comment
 export default CreateTodo
