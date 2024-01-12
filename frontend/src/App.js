@@ -26,7 +26,6 @@ function App() {
 }
 
   function Todo({ id }) {
-    // set the todos
     
   let [todo, setTodo] = useState([]);
 
