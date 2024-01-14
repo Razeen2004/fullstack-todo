@@ -6,7 +6,6 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import axios from "axios"
 function App() {
-  // constraintsREF for the drag and drop feature 
   const constraintsRef = useRef(null);
 
   const [id,setId] = useState("1")
